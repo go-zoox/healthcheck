@@ -1,8 +1,10 @@
 package healthcheck
 
 import (
+	"fmt"
 	"time"
 
+	"github.com/go-zoox/core-utils/regexp"
 	"github.com/go-zoox/fetch"
 )
 
@@ -22,6 +24,10 @@ type HTTPOptions struct {
 
 // HTTP checks if the given url is healthy (reachable) via HTTP
 func HTTP(url string, opts ...*HTTPOptions) (ok bool, err error) {
+	if ok := regexp.Match(`^https?://`, url); !ok {
+		return false, fmt.Errorf("url must be start with http:// or https://")
+	}
+
 	method := "GET"
 	timeout := 3 * time.Second
 	headers := map[string]string{}
