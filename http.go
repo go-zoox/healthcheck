@@ -8,7 +8,7 @@ import (
 
 // HTTPOptions is the options for the HTTP health check
 type HTTPOptions struct {
-	Timeout int
+	Timeout time.Duration
 	//
 	Method string
 	Header map[string]string
