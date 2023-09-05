@@ -20,6 +20,7 @@ func Ping(domain string, timeout ...time.Duration) (ok bool, err error) {
 
 	pinger.Timeout = timeoutx
 	pinger.Count = 3
+	pinger.Interval = 10 * time.Millisecond
 	err = pinger.Run() // Blocks until finished.
 	if err != nil {
 		return false, err
