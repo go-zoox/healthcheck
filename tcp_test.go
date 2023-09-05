@@ -8,7 +8,7 @@ import (
 )
 
 func TestTCP(t *testing.T) {
-	ok, err := TCP("20.205.243.166", 443)
+	ok, err := TCP("20.205.243.166", 80)
 	testify.Assert(t, err == nil)
 	testify.Equal(t, true, ok)
 
